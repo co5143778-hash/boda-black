@@ -33,6 +33,35 @@
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
+        
+        /* Mobile responsive styles for taller images */
+        @media (max-width: 768px) {
+            .carousel-item img {
+                max-height: 400px !important;
+                height: 350px !important;
+                width: auto !important;
+                max-width: 90% !important;
+            }
+            
+            .carousel-item {
+                min-width: 50% !important;
+                padding: 0 5px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-item img {
+                max-height: 450px !important;
+                height: 400px !important;
+                width: auto !important;
+                max-width: 85% !important;
+            }
+            
+            .carousel-item {
+                min-width: 60% !important;
+                padding: 0 3px !important;
+            }
+        }
         .carousel-container {
             position: relative;
             width: 100%;
