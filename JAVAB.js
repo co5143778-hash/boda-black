@@ -119,17 +119,21 @@ function toggleMusic() {
 function updateMusicIcon() {
     const volumeIcon = document.getElementById('volumeIcon');
     
-    if (isPlaying) {
-        volumeIcon.innerHTML = `
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08"></path>
-        `;
-    } else {
-        volumeIcon.innerHTML = `
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <line x1="23" y1="9" x2="17" y2="15"></line>
-            <line x1="17" y1="9" x2="23" y2="15"></line>
-        `;
+    if (volumeIcon) {
+        if (isPlaying) {
+            volumeIcon.innerHTML = `
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#222" stroke="#fff" stroke-width="1"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08" stroke="#222" stroke-width="2"></path>
+                <circle cx="6.5" cy="12" r="1" fill="#ffe27a"/>
+            `;
+        } else {
+            volumeIcon.innerHTML = `
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#222" stroke="#fff" stroke-width="1"></polygon>
+                <line x1="19" y1="9" x2="17" y2="11" stroke="#ff6b6b" stroke-width="2"></line>
+                <line x1="17" y1="9" x2="19" y2="11" stroke="#ff6b6b" stroke-width="2"></line>
+                <circle cx="6.5" cy="12" r="1" fill="#ff6b6b"/>
+            `;
+        }
     }
 }
 
@@ -166,31 +170,19 @@ function initializeCountdown() {
 // Carrusel
 function initializeCarousel() {
     const track = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const currentSlideElement = document.getElementById('currentSlide');
-    const totalSlidesElement = document.getElementById('totalSlides');
     
-    totalSlidesElement.textContent = totalSlides;
-    updateSlideCounter();
-    
-    prevBtn.addEventListener('click', () => {
-        if (currentSlide > 0) {
-            currentSlide--;
-        } else {
-            currentSlide = totalSlides - 1;
-        }
-        updateCarousel();
-    });
-    
-    nextBtn.addEventListener('click', () => {
-        if (currentSlide < totalSlides - 1) {
-            currentSlide++;
-        } else {
-            currentSlide = 0;
-        }
-        updateCarousel();
-    });
+    // Solo configurar el botón siguiente si existe
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateCarousel();
+        });
+    }
     
     // Auto-play del carrusel
     setInterval(() => {
@@ -205,14 +197,18 @@ function initializeCarousel() {
 
 function updateCarousel() {
     const track = document.getElementById('carouselTrack');
-    const translateX = -currentSlide * 100;
-    track.style.transform = `translateX(${translateX}%)`;
+    if (track) {
+        const translateX = -currentSlide * 100;
+        track.style.transform = `translateX(${translateX}%)`;
+    }
     updateSlideCounter();
 }
 
 function updateSlideCounter() {
     const currentSlideElement = document.getElementById('currentSlide');
-    currentSlideElement.textContent = currentSlide + 1;
+    if (currentSlideElement) {
+        currentSlideElement.textContent = currentSlide + 1;
+    }
 }
 
 // Funciones de los botones
