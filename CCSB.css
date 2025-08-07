@@ -413,6 +413,11 @@ body {
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
+/* Ajuste específico para el icono de regalo */
+.gift-icon {
+    margin: 0 auto 2.5rem !important;
+}
+
 .event-icon svg,
 .camera-icon svg,
 .party-icon svg,
