@@ -827,3 +827,159 @@ body {
 }
 
 /* Carrusel: ajusta para 6 imágenes, no requiere cambios en CSS, solo en HTML */
+
+/* Modern Icon Animations and Styles */
+.icon-speaker,
+.icon-music,
+.event-icon,
+.camera-icon,
+.party-icon,
+.gift-icon,
+.whatsapp-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Speaker Icon Animation */
+.icon-speaker svg {
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.btn-music-modern:hover .icon-speaker svg {
+    transform: scale(1.1) rotate(5deg);
+    animation: speakerPulse 0.6s ease-in-out;
+}
+
+@keyframes speakerPulse {
+    0%, 100% { transform: scale(1.1) rotate(5deg); }
+    50% { transform: scale(1.2) rotate(-2deg); }
+}
+
+/* Modern Heart Icon with Animation */
+.modal-icon svg,
+.event-icon svg {
+    transition: all 0.3s ease;
+}
+
+.modal-icon:hover svg,
+.event-card:hover .event-icon svg {
+    transform: scale(1.1);
+    animation: heartBeat 0.8s ease-in-out;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1.1); }
+    25% { transform: scale(1.25); }
+    50% { transform: scale(1.1); }
+    75% { transform: scale(1.2); }
+}
+
+/* Music Icon Animation */
+.party-icon svg {
+    transition: all 0.3s ease;
+}
+
+.party-card:hover .party-icon svg {
+    transform: rotate(10deg) scale(1.1);
+    animation: musicBounce 0.7s ease-in-out;
+}
+
+@keyframes musicBounce {
+    0%, 100% { transform: rotate(10deg) scale(1.1); }
+    25% { transform: rotate(-5deg) scale(1.15); }
+    50% { transform: rotate(15deg) scale(1.05); }
+    75% { transform: rotate(-2deg) scale(1.12); }
+}
+
+/* Gift Box Animation */
+.gift-icon svg {
+    transition: all 0.3s ease;
+}
+
+.gifts-container:hover .gift-icon svg {
+    transform: translateY(-5px) scale(1.1);
+    animation: giftFloat 1s ease-in-out infinite alternate;
+}
+
+@keyframes giftFloat {
+    0% { transform: translateY(-5px) scale(1.1); }
+    100% { transform: translateY(-10px) scale(1.1) rotate(2deg); }
+}
+
+/* WhatsApp Icon Animation */
+.whatsapp-icon svg {
+    transition: all 0.3s ease;
+}
+
+.rsvp-container:hover .whatsapp-icon svg {
+    transform: scale(1.1);
+    animation: phoneRing 0.5s ease-in-out 3;
+}
+
+@keyframes phoneRing {
+    0%, 100% { transform: scale(1.1) rotate(0deg); }
+    25% { transform: scale(1.15) rotate(-5deg); }
+    75% { transform: scale(1.15) rotate(5deg); }
+}
+
+/* Camera Icon Animation */
+.camera-icon {
+    transition: all 0.3s ease;
+}
+
+.gallery-container:hover .camera-icon {
+    transform: scale(1.05);
+    animation: cameraFlash 1.2s ease-in-out;
+}
+
+@keyframes cameraFlash {
+    0%, 100% { box-shadow: 0 4px 18px -6px rgba(255, 226, 122, 0.18); }
+    15% { box-shadow: 0 4px 25px 0px rgba(255, 255, 255, 0.8); }
+    30% { box-shadow: 0 4px 18px -6px rgba(255, 226, 122, 0.18); }
+}
+
+/* Modern Black Icons with White Accents */
+.modern-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modern-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #000, #333, #000);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modern-icon:hover::before {
+    opacity: 0.1;
+}
+
+/* Enhanced hover effects for all icons */
+.btn-wedding:hover,
+.event-card:hover,
+.party-card:hover,
+.gifts-container:hover,
+.rsvp-container:hover,
+.gallery-container:hover {
+    transform: translateY(-2px);
+}
+
+/* Scroll indicator animation enhancement */
+.scroll-indicator {
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
