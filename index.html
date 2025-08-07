@@ -34,46 +34,50 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         
-        /* Mobile responsive styles for much taller images */
+        /* Mobile responsive styles for well-proportioned images */
         @media (max-width: 768px) {
             .carousel-item img {
-                max-height: 600px !important;
-                height: 500px !important;
-                min-height: 450px !important;
+                max-height: 320px !important;
+                height: 280px !important;
                 width: auto !important;
-                max-width: 95% !important;
+                max-width: 85% !important;
                 object-fit: cover !important;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             }
             
             .carousel-item {
-                min-width: 80% !important;
-                padding: 0 10px !important;
-                height: 520px !important;
+                min-width: 50% !important;
+                padding: 0 8px !important;
+                height: 300px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
             }
             
             .carousel-track-container {
-                height: 540px !important;
+                height: 320px !important;
             }
         }
         
         @media (max-width: 480px) {
             .carousel-item img {
-                max-height: 650px !important;
-                height: 550px !important;
-                min-height: 500px !important;
+                max-height: 280px !important;
+                height: 240px !important;
                 width: auto !important;
-                max-width: 90% !important;
+                max-width: 80% !important;
                 object-fit: cover !important;
+                border-radius: 10px;
             }
             
             .carousel-item {
-                min-width: 85% !important;
-                padding: 0 8px !important;
-                height: 570px !important;
+                min-width: 60% !important;
+                padding: 0 5px !important;
+                height: 260px !important;
             }
             
             .carousel-track-container {
-                height: 590px !important;
+                height: 280px !important;
             }
         }
         .carousel-container {
