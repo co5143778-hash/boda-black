@@ -7,9 +7,27 @@ let enableMusic = false;
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado, inicializando...');
     initializeCountdown();
     initializeCarousel();
-    initializeModal();
+    
+    // Pequeño delay para asegurar que todos los elementos están disponibles
+    setTimeout(() => {
+        initializeModal();
+    }, 100);
+});
+
+// Fallback: También inicializar cuando la ventana esté completamente cargada
+window.addEventListener('load', function() {
+    console.log('Ventana cargada completamente');
+    // Solo reinicializar si no se ha hecho ya
+    setTimeout(() => {
+        const modal = document.getElementById('welcomeModal');
+        if (modal && modal.style.display !== 'none') {
+            console.log('Reinicializando modal...');
+            initializeModal();
+        }
+    }, 200);
 });
 
 // Modal de bienvenida
@@ -18,20 +36,34 @@ function initializeModal() {
     const enterWithoutMusic = document.getElementById('enterWithoutMusic');
     const modal = document.getElementById('welcomeModal');
 
-    enterWithMusic.addEventListener('click', function() {
-        enableMusic = true;
-        modal.style.display = 'none';
-        if (window.YT && window.YT.Player) {
-            initializeYouTubePlayer();
-        } else {
-            loadYouTubeAPI();
-        }
-    });
+    console.log('Inicializando modal...', { enterWithMusic, enterWithoutMusic, modal });
 
-    enterWithoutMusic.addEventListener('click', function() {
-        enableMusic = false;
-        modal.style.display = 'none';
-    });
+    if (enterWithMusic) {
+        enterWithMusic.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Botón con música clickeado');
+            enableMusic = true;
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            if (window.YT && window.YT.Player) {
+                initializeYouTubePlayer();
+            } else {
+                loadYouTubeAPI();
+            }
+        });
+    }
+
+    if (enterWithoutMusic) {
+        enterWithoutMusic.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Botón sin música clickeado');
+            enableMusic = false;
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
 }
 
 // Cargar la API de YouTube
