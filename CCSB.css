@@ -1030,16 +1030,21 @@ body {
 /* Mobile responsive styles for carousel images */
 @media (max-width: 768px) {
     .carousel-item img {
-        max-height: 350px !important;
-        width: 100% !important;
+        max-height: 450px !important;
+        height: 400px !important;
+        width: auto !important;
+        max-width: 100% !important;
         object-fit: cover;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     
     .carousel-item {
-        min-width: 50% !important;
+        min-width: 33.3333% !important;
         padding: 0 5px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     
     .carousel-container {
@@ -1050,12 +1055,14 @@ body {
 
 @media (max-width: 480px) {
     .carousel-item img {
-        max-height: 300px !important;
-        width: 100% !important;
+        max-height: 500px !important;
+        height: 450px !important;
+        width: auto !important;
+        max-width: 95% !important;
     }
     
     .carousel-item {
-        min-width: 80% !important;
+        min-width: 50% !important;
         padding: 0 3px !important;
     }
 }
