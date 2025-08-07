@@ -983,3 +983,12 @@ body {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(10px); }
 }
+
+/* White text styles for specific elements */
+.modal-subtitle,
+.event-details h4,
+.party-card h3,
+.hashtag,
+.footer-date {
+    color: #fff !important;
+}
