@@ -413,9 +413,38 @@ body {
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
-/* Ajuste específico para el icono de regalo */
-.gift-icon {
-    margin: 0 auto 2.5rem !important;
+/* Ajuste específico para el icono de regalo y botón */
+.gifts-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.gifts-container .gift-icon {
+    width: 5rem !important;
+    height: 5rem !important;
+    margin: 0 auto 3rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    order: 2 !important;
+}
+
+.gifts-container .section-title {
+    order: 1 !important;
+    margin-bottom: 1rem !important;
+}
+
+.gifts-container .section-subtitle {
+    order: 1 !important;
+    margin-bottom: 2rem !important;
+}
+
+.gifts-container .btn-wedding {
+    margin-top: 1rem !important;
+    display: block !important;
+    order: 3 !important;
 }
 
 .event-icon svg,
