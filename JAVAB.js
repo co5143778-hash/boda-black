@@ -5,43 +5,41 @@ let currentSlide = 0;
 const totalSlides = 12;
 let enableMusic = false;
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado, inicializando...');
-    initializeCountdown();
-    initializeCarousel();
-    
-    // Pequeño delay para asegurar que todos los elementos están disponibles
-    setTimeout(() => {
-        initializeModal();
-    }, 100);
-});
+// Funciones globales para los botones del modal
+function enterWithMusicClick() {
+    console.log('Función enterWithMusicClick() ejecutada');
+    enableMusic = true;
+    const modal = document.getElementById('welcomeModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+    if (window.YT && window.YT.Player) {
+        initializeYouTubePlayer();
+    } else {
+        loadYouTubeAPI();
+    }
+}
 
-// Fallback: También inicializar cuando la ventana esté completamente cargada
-window.addEventListener('load', function() {
-    console.log('Ventana cargada completamente');
-    // Solo reinicializar si no se ha hecho ya
-    setTimeout(() => {
-        const modal = document.getElementById('welcomeModal');
-        if (modal && modal.style.display !== 'none') {
-            console.log('Reinicializando modal...');
-            initializeModal();
-        }
-    }, 200);
-});
+function enterWithoutMusicClick() {
+    console.log('Función enterWithoutMusicClick() ejecutada');
+    enableMusic = false;
+    const modal = document.getElementById('welcomeModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
 
-// Modal de bienvenida
-function initializeModal() {
+// Función para configurar los botones directamente
+function setupModalButtons() {
     const enterWithMusic = document.getElementById('enterWithMusic');
     const enterWithoutMusic = document.getElementById('enterWithoutMusic');
     const modal = document.getElementById('welcomeModal');
 
-    console.log('Inicializando modal...', { enterWithMusic, enterWithoutMusic, modal });
+    console.log('Configurando botones del modal...', { enterWithMusic, enterWithoutMusic, modal });
 
     if (enterWithMusic) {
-        enterWithMusic.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Botón con música clickeado');
+        enterWithMusic.onclick = function() {
+            console.log('Botón CON música clickeado');
             enableMusic = true;
             if (modal) {
                 modal.style.display = 'none';
@@ -51,20 +49,35 @@ function initializeModal() {
             } else {
                 loadYouTubeAPI();
             }
-        });
+        };
     }
 
     if (enterWithoutMusic) {
-        enterWithoutMusic.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Botón sin música clickeado');
+        enterWithoutMusic.onclick = function() {
+            console.log('Botón SIN música clickeado');
             enableMusic = false;
             if (modal) {
                 modal.style.display = 'none';
             }
-        });
+        };
     }
 }
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado, inicializando...');
+    initializeCountdown();
+    initializeCarousel();
+    setupModalButtons();
+});
+
+// También configurar cuando la página esté completamente cargada
+window.addEventListener('load', function() {
+    console.log('Ventana completamente cargada');
+    setupModalButtons();
+});
+
+
 
 // Cargar la API de YouTube
 function loadYouTubeAPI() {
