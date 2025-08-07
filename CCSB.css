@@ -1026,3 +1026,36 @@ body {
 .footer-date {
     color: #fff !important;
 }
+
+/* Mobile responsive styles for carousel images */
+@media (max-width: 768px) {
+    .carousel-item img {
+        max-height: 350px !important;
+        width: 100% !important;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .carousel-item {
+        min-width: 50% !important;
+        padding: 0 5px !important;
+    }
+    
+    .carousel-container {
+        max-width: 100% !important;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item img {
+        max-height: 300px !important;
+        width: 100% !important;
+    }
+    
+    .carousel-item {
+        min-width: 80% !important;
+        padding: 0 3px !important;
+    }
+}
